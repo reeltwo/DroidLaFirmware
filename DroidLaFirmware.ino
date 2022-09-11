@@ -619,7 +619,7 @@ void processConfigureCommand(const char* cmd)
             Serial.println("Unchanged");
         }
     }
-    else if (startswith_P(cmd, F("#DFSERIALBAUD")) && isdigit(*cmd))
+    else if (startswith_P(cmd, F("#DLSERIALBAUD")) && isdigit(*cmd))
     {
         uint32_t baudrate = strtolu(cmd, &cmd);
         for (unsigned i = 0; i < SizeOfArray(sSerialBaudRates); i++)
@@ -629,6 +629,10 @@ void processConfigureCommand(const char* cmd)
                 preferences.putUInt(PREFERENCE_SERIAL_BAUDRATE, baudrate);
                 Serial.println("Baud rate changed");
                 reboot();
+            }
+            else
+            {
+                Serial.println("Not supported");
             }
         }
     }
@@ -669,6 +673,7 @@ void processConfigureCommand(const char* cmd)
         Serial.println("#DLBANDWIDTH");
         Serial.println("#DLCODERATE");
         Serial.println("#DLCRC");
+        Serial.println("#DLSERIALBAUD");
         Serial.println("#DLWIFI");
     }
 }
