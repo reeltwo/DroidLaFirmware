@@ -8,3 +8,5 @@
 #define RST_OLED_PIN    16
 #define SCL_OLED_PIN    15
 #define SDA_OLED_PIN    4
+#define TXD2_PIN        17
+#define RXD2_PIN        34
